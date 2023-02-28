@@ -8,9 +8,10 @@ vim.keymap.set(
   { noremap = true, silent = true, desc = "resume" }
 )
 vim.cmd([[imap <silent><script><expr> <C-A> copilot#Accept("\<CR>")]])
+vim.api.nvim_set_keymap("n", "<leader>w", ":w<CR>", { noremap = true, silent = true })
 
 local is_wsl = (function()
-  local output = vim.fn.systemlist "uname -r"
+  local output = vim.fn.systemlist("uname -r")
   return not not string.find(output[1] or "", "WSL")
 end)()
 if is_wsl then
